@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOTAL AGENT GAMING - Guild Form</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font import */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        /* Apply Inter font and smooth scrolling */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212; /* Darker, near-black tactical background */
+            scroll-behavior: smooth;
+        }
+        
+        /* Style for the focus state on inputs, using a Free Fire-inspired red */
+        input:focus, textarea:focus {
+            --tw-ring-color: #dc2626; /* Intense red for focus ring (red-600) */
+            outline: none;
+        }
+        
+        /* Style for the gathered information section labels */
+        .info-label {
+            @apply font-semibold text-red-400 mr-2;
+        }
+        .info-value {
+             @apply text-white;
+        }
+
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <!-- Main Container -->
+    <div class="w-full max-w-lg">
+        
+        <!-- LINK/BUTTON CONTAINER - Initially visible (The "Simple Link" converted to a small hyperlink) -->
+        <div id="linkContainer" class="bg-zinc-900 rounded-xl shadow-2xl shadow-red-900/40 p-6 md:p-10 border border-red-700/50 text-center">
+            <h1 class="text-3xl font-extrabold text-white mb-4">TOTAL AGENT GAMING</h1>
+            <p class="text-lg text-gray-400 mb-8">Ready to join the guild? Click the link below to start your registration.</p>
+            <a 
+                href="#" 
+                id="registerLink"
+                onclick="event.preventDefault(); showForm();"
+                class="inline-block text-red-500 hover:text-red-400 font-semibold text-lg border-b border-red-500 hover:border-red-400 transition duration-150"
+            >
+                Start Registration Form
+            </a>
+        </div>
+
+        <!-- Form Container Card - Initially hidden, revealed by the link -->
+        <div id="formContainer" class="hidden bg-zinc-900 rounded-xl shadow-2xl shadow-red-900/40 p-6 md:p-10 border border-red-700/50">
+            
+            <!-- TITLE SECTION -->
+            <h1 class="text-4xl font-extrabold text-white text-center mb-1">TOTAL AGENT GAMING</h1>
+            <p class="text-sm font-semibold text-red-500 mb-8 text-center uppercase tracking-wider">Guild Form</p>
+
+            <form id="registrationForm" onsubmit="handleSubmission(event)" class="space-y-6">
+
+                <!-- 1. Real Name Option -->
+                <div>
+                    <label for="realName" class="block text-sm font-medium text-gray-300 mb-1">Your Full Name</label>
+                    <input 
+                        type="text" 
+                        id="realName" 
+                        name="realName" 
+                        required 
+                        placeholder="e.g., Jane Doe"
+                        class="w-full px-4 py-2 bg-zinc-800 border border-red-900 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-red-600 transition duration-150"
+                    >
+                </div>
+
+                <!-- 2. In-Game Name Option -->
+                <div>
+                    <label for="gameName" class="block text-sm font-medium text-gray-300 mb-1">In-Game Name (IGN)</label>
+                    <input 
+                        type="text" 
+                        id="gameName" 
+                        name="gameName" 
+                        required 
+                        placeholder="e.g., PhantomSniper42"
+                        class="w-full px-4 py-2 bg-zinc-800 border border-red-900 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-red-600 transition duration-150"
+                    >
+                </div>
+
+                <!-- 3. Experience Option (Radio Buttons/Poll) -->
+                <fieldset class="border border-red-900 p-4 rounded-lg">
+                    <legend class="text-sm font-medium text-gray-300 px-2">Years of Gaming Experience</legend>
+                    <div class="mt-2 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        
+                        <!-- Options with red accent -->
+                        <div class="flex items-center">
+                            <input type="radio" id="exp-1" name="gamingExperience" value="1 year" required class="h-4 w-4 text-red-600 bg-zinc-800 border-red-900 focus:ring-red-600">
+                            <label for="exp-1" class="ml-2 text-white text-sm">1 year</label>
+                        </div>
+
+                        <div class="flex items-center">
+                            <input type="radio" id="exp-2" name="gamingExperience" value="2 years" required class="h-4 w-4 text-red-600 bg-zinc-800 border-red-900 focus:ring-red-600">
+                            <label for="exp-2" class="ml-2 text-white text-sm">2 years</label>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <input type="radio" id="exp-3" name="gamingExperience" value="3 years" required class="h-4 w-4 text-red-600 bg-zinc-800 border-red-900 focus:ring-red-600">
+                            <label for="exp-3" class="ml-2 text-white text-sm">3 years</label>
+                        </div>
+
+                        <div class="flex items-center">
+                            <input type="radio" id="exp-4" name="gamingExperience" value="4 years" required class="h-4 w-4 text-red-600 bg-zinc-800 border-red-900 focus:ring-red-600">
+                            <label for="exp-4" class="ml-2 text-white text-sm">4 years</label>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <input type="radio" id="exp-old" name="gamingExperience" value="Old player" required class="h-4 w-4 text-red-600 bg-zinc-800 border-red-900 focus:ring-red-600">
+                            <label for="exp-old" class="ml-2 text-white text-sm">Old player</label>
+                        </div>
+
+                    </div>
+                </fieldset>
+
+                <!-- 4. Map Type Poll (Radio Buttons) -->
+                <fieldset class="border border-red-900 p-4 rounded-lg">
+                    <legend class="text-sm font-medium text-gray-300 px-2">Preferred Map Type</legend>
+                    <div class="mt-2 flex space-x-8">
+
+                        <!-- Option BR with red accent -->
+                        <div class="flex items-center">
+                            <input 
+                                type="radio" 
+                                id="map-br" 
+                                name="mapType" 
+                                value="BR (Battle Royale)" 
+                                required 
+                                class="h-4 w-4 text-red-600 bg-zinc-800 border-red-900 focus:ring-red-600"
+                            >
+                            <label for="map-br" class="ml-2 text-white">BR (Battle Royale)</label>
+                        </div>
+
+                        <!-- Option CS with red accent -->
+                        <div class="flex items-center">
+                            <input 
+                                type="radio" 
+                                id="map-cs" 
+                                name="mapType" 
+                                value="CS (Capture/Strategy)" 
+                                required 
+                                class="h-4 w-4 text-red-600 bg-zinc-800 border-red-900 focus:ring-red-600"
+                            >
+                            <label for="map-cs" class="ml-2 text-white">CS (Capture/Strategy)</label>
+                        </div>
+
+                    </div>
+                </fieldset>
+
+                <!-- 5. Flexibility (Timing) Poll (Radio Buttons) -->
+                <fieldset class="border border-red-900 p-4 rounded-lg">
+                    <legend class="text-sm font-medium text-gray-300 px-2">Flexibility (Timing)</legend>
+                    <div class="mt-2 flex space-x-8">
+
+                        <!-- Option Daily with red accent -->
+                        <div class="flex items-center">
+                            <input 
+                                type="radio" 
+                                id="timing-daily" 
+                                name="timingFlexibility" 
+                                value="Daily" 
+                                required 
+                                class="h-4 w-4 text-red-600 bg-zinc-800 border-red-900 focus:ring-red-600"
+                            >
+                            <label for="timing-daily" class="ml-2 text-white">Daily</label>
+                        </div>
+
+                        <!-- Option Weekly with red accent -->
+                        <div class="flex items-center">
+                            <input 
+                                type="radio" 
+                                id="timing-weekly" 
+                                name="timingFlexibility" 
+                                value="Weekly" 
+                                required 
+                                class="h-4 w-4 text-red-600 bg-zinc-800 border-red-900 focus:ring-red-600"
+                            >
+                            <label for="timing-weekly" class="ml-2 text-white">Weekly</label>
+                        </div>
+                        
+                        <!-- Option Holiday with red accent -->
+                        <div class="flex items-center">
+                            <input 
+                                type="radio" 
+                                id="timing-holiday" 
+                                name="timingFlexibility" 
+                                value="Holiday only" 
+                                required 
+                                class="h-4 w-4 text-red-600 bg-zinc-800 border-red-900 focus:ring-red-600"
+                            >
+                            <label for="timing-holiday" class="ml-2 text-white">Holiday only</label>
+                        </div>
+
+                    </div>
+                </fieldset>
+
+                <!-- 6. Game ID (UID) Option -->
+                <div>
+                    <label for="uid" class="block text-sm font-medium text-gray-300 mb-1">Your Game ID (UID)</label>
+                    <input 
+                        type="text" 
+                        id="uid" 
+                        name="uid" 
+                        required 
+                        placeholder="e.g., 1234567890 (Required for guild invite)"
+                        class="w-full px-4 py-2 bg-zinc-800 border border-red-900 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-red-600 transition duration-150"
+                    >
+                </div>
+
+                <!-- 7. Phone Number Option -->
+                <div>
+                    <label for="phoneNumber" class="block text-sm font-medium text-gray-300 mb-1">Your Phone Number (Optional)</label>
+                    <input 
+                        type="tel" 
+                        id="phoneNumber" 
+                        name="phoneNumber" 
+                        placeholder="e.g., 555-123-4567"
+                        class="w-full px-4 py-2 bg-zinc-800 border border-red-900 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-red-600 transition duration-150"
+                    >
+                </div>
+
+                <!-- Submission Button -->
+                <button 
+                    type="submit" 
+                    id="submitButton"
+                    class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-lg shadow-lg shadow-red-700/50 transform transition duration-200 ease-in-out hover:scale-[1.01] focus:ring-4 focus:ring-red-300"
+                >
+                    Register Profile
+                </button>
+
+            </form>
+
+            <!-- Message Box for brief confirmation -->
+            <div id="messageBox" class="hidden mt-6 p-4 rounded-lg bg-green-700 text-white text-center font-semibold transition duration-300">
+                <!-- Content filled by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Gathered Information Section - Initially hidden -->
+        <div id="gatheredInfoSection" class="hidden mt-6 bg-zinc-900 rounded-xl shadow-2xl shadow-red-900/40 p-6 md:p-10 border border-red-700/50">
+            <h2 class="text-2xl font-bold text-red-500 text-center mb-6 uppercase tracking-wider">Gathered Information</h2>
+            <div id="infoDisplay" class="space-y-3 text-sm">
+                <!-- Information will be populated here by JavaScript -->
+            </div>
+             <button 
+                onclick="resetForm()" 
+                class="mt-8 w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 rounded-lg transition duration-150"
+            >
+                Register Another Profile
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        // Store references to elements
+        const linkContainer = document.getElementById('linkContainer');
+        const formContainer = document.getElementById('formContainer');
+        const registrationForm = document.getElementById('registrationForm');
+        const messageBox = document.getElementById('messageBox');
+        const gatheredInfoSection = document.getElementById('gatheredInfoSection');
+        const infoDisplay = document.getElementById('infoDisplay');
+
+        // Function to reveal the form when the 'simple link' button is clicked
+        function showForm() {
+            linkContainer.classList.add('hidden');
+            formContainer.classList.remove('hidden');
+            // Scroll to the top of the form for better visibility
+            formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function handleSubmission(event) {
+            // Prevent the default form submission behavior
+            event.preventDefault(); 
+
+            // 1. Collect form data
+            const realName = document.getElementById('realName').value;
+            const gameName = document.getElementById('gameName').value;
+            const uid = document.getElementById('uid').value; 
+            const phoneNumber = document.getElementById('phoneNumber').value.trim() || 'Not Provided';
+            
+            const mapTypeElement = document.querySelector('input[name="mapType"]:checked');
+            const gamingExperienceElement = document.querySelector('input[name="gamingExperience"]:checked');
+            const timingFlexibilityElement = document.querySelector('input[name="timingFlexibility"]:checked');
+            
+            // Should always have values due to 'required' but check for safety
+            const mapType = mapTypeElement ? mapTypeElement.value : 'N/A';
+            const gamingExperience = gamingExperienceElement ? gamingExperienceElement.value : 'N/A';
+            const timingFlexibility = timingFlexibilityElement ? timingFlexibilityElement.value : 'N/A';
+
+            // 2. Display brief success message
+            messageBox.textContent = `Thank you, ${gameName}! Registration successful.`;
+            messageBox.classList.remove('hidden');
+            
+            // Hide message after a short delay
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 3000); // Hide after 3 seconds
+
+            // 3. Hide the form
+            formContainer.classList.add('hidden');
+
+            // 4. Populate the gathered information section
+            infoDisplay.innerHTML = `
+                <p><span class="info-label">Full Name:</span><span class="info-value">${realName}</span></p>
+                <p><span class="info-label">IGN:</span><span class="info-value">${gameName}</span></p>
+                <p><span class="info-label">Game ID (UID):</span><span class="info-value">${uid}</span></p>
+                <p><span class="info-label">Phone Number:</span><span class="info-value">${phoneNumber}</span></p>
+                <p><span class="info-label">Experience:</span><span class="info-value">${gamingExperience}</span></p>
+                <p><span class="info-label">Map Preference:</span><span class="info-value">${mapType}</span></p>
+                <p><span class="info-label">Timing Flexibility:</span><span class="info-value">${timingFlexibility}</span></p>
+            `;
+
+            // 5. Show the gathered information section
+            gatheredInfoSection.classList.remove('hidden');
+
+             // Scroll to the gathered info section smoothly
+            gatheredInfoSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function resetForm() {
+            // Hide the gathered info section
+            gatheredInfoSection.classList.add('hidden');
+            
+            // Clear the form fields
+            registrationForm.reset(); 
+
+            // Show the simple link container again
+            linkContainer.classList.remove('hidden');
+
+            // Scroll back to the link container
+            linkContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+</body>
+</html>
